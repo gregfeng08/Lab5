@@ -7,44 +7,36 @@
  */
 import java.util.*;
 public class Lab5 {
-	//BYAC 190
+	//BYAC 190 ASU 101 class
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		String shape;
-		char sideChar,midChar;
+		boolean running = true;
+		final char sideChar='-',midChar='*';
 		int sideLength,midLength,height;
-		while(true) {
-			System.out.println("What shape would you like to create?[Row/Pyramid/Diamond]");
-			shape=scanner.next();
+		while(running) {
+			System.out.println("What shape would you like to create?[r/p/d/q]");
+			shape=scanner.next().toUpperCase();
 			switch(shape) {
-			case "Row":
-				System.out.println("What would you like the middle character to be?");
-				midChar=scanner.next().charAt(0);
-				System.out.println("What would you like the side character to be?");
-				sideChar=scanner.next().charAt(0);
+			case "R":
 				System.out.println("What would you like the side length to be?");
 				sideLength=scanner.nextInt();
 				System.out.println("What would you like the middle length to be?");
 				midLength=scanner.nextInt();
 				buildRow(sideChar,midChar,sideLength,midLength);
 				break;
-			case "Pyramid":
-				System.out.println("What would you like the side character to be?");
-				sideChar=scanner.next().charAt(0);
-				System.out.println("What would you like the middle character to be?");
-				midChar=scanner.next().charAt(0);
+			case "P":
 				System.out.println("What would you like the amount of symbols in the lowest row of the pyramid to be?");
 				height=scanner.nextInt();
 				buildPyramid(sideChar,midChar,height);
 				break;
-			case "Diamond":
-				System.out.println("What would you like the side character to be?");
-				sideChar=scanner.next().charAt(0);
-				System.out.println("What would you like the middle character to be?");
-				midChar=scanner.next().charAt(0);
-				System.out.println("What would you like the amount of symbols in the lowest row of the pyramid to be?");
+			case "D":
+				System.out.println("What would you like the amount of symbols in the middle row of the diamond to be?");
 				height=scanner.nextInt();
-				buildDiamond(sideChar,midChar,height);
+				buildDiamond('*',' ',height);
+				break;
+			case "Q":
+				running=false;
 				break;
 			default:
 				System.out.println("Invalid input !");
